@@ -4,13 +4,12 @@ const resetbtn = document.getElementById('reset')
 const errorh3 = document.getElementById('error')
 
 
-let isItNumb = (x) => {
+
+let betterValid = (x) => {
     let xnum = Number(x.value)
-
     console.log(xnum)
-
-    if (isNaN(xnum)) {
-        return errorh3.textContent= 'Please Enter A Valid Number'
+    if(Number.isNaN(xnum) || !Number.isFinite(xnum)) {
+        return errorh3.textContent= 'Please Enter A Valid Number pipline'
     } else {
         return errorh3.textContent= ''
     }
@@ -26,14 +25,14 @@ let fahrToCel = (x) => {
 
 
 celsinput.addEventListener('input', ()=> {
-    isItNumb(celsinput)
+    betterValid(celsinput)
     let celnum = Number(celsinput.value)
     let finalfahr = celToFahr(celnum)
     fahrinput.value = finalfahr
 })
 
 fahrinput.addEventListener('input', ()=> {
-    isItNumb(fahrinput)
+    betterValid(fahrinput)
     let fahrnum = Number(fahrinput.value)
     let finalcel = fahrToCel(fahrnum)
     celsinput.value = finalcel
